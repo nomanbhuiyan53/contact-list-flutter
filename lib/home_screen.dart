@@ -33,12 +33,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 16,),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: TextFormField(
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(
+            children: [
+              const SizedBox(height: 8,),
+              TextFormField(
                 controller: _nameTEcontroller,
                 decoration: const InputDecoration(
                   hintText: 'Enter Name',
@@ -59,10 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: TextFormField(
+              const SizedBox(height: 8,),
+              TextFormField(
                 controller: _mobileTEcontroller,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
@@ -84,44 +82,42 @@ class _HomeScreenState extends State<HomeScreen> {
                     )
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: ElevatedButton(
+              const SizedBox(height: 10,),
+              ElevatedButton(
                   onPressed: _addContact,
                   style: ElevatedButton.styleFrom(
-                    padding:const EdgeInsets.symmetric(vertical: 20),
+                    padding:const EdgeInsets.symmetric(vertical: 15),
                     backgroundColor: Colors.blueGrey,
                     foregroundColor: Colors.white,
                     shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4)))
                   ),
                   child: const Center(child: Text('Add'))),
-            ),
-            const SizedBox(height: 12,),
-            SingleChildScrollView(
-              child: Column(
-                children: List.generate(
-                  contacts.length,
-                      (index) => InkWell(
-                    onLongPress: () {
-                      _showDeleteConfirmationDialog(index);
-                    },
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ListTile(
-                          leading:const Icon(Icons.account_box,size: 50,),
-                          title: Text(contacts[index].name,style:const TextStyle(color: Colors.red,fontSize: 20),),
-                          subtitle: Text(contacts[index].phoneNumber),
-                          trailing:const Icon(Icons.call,color: Colors.blueAccent,size: 25,),
+              const SizedBox(height: 12,),
+              SingleChildScrollView(
+                child: Column(
+                  children: List.generate(
+                    contacts.length,
+                        (index) => InkWell(
+                      onLongPress: () {
+                        _showDeleteConfirmationDialog(index);
+                      },
+                      child: Card(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            leading:const Icon(Icons.account_box,size: 50,),
+                            title: Text(contacts[index].name,style:const TextStyle(color: Colors.red,fontSize: 20),),
+                            subtitle: Text(contacts[index].phoneNumber),
+                            trailing:const Icon(Icons.call,color: Colors.blueAccent,size: 25,),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
